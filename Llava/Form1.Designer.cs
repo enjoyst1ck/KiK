@@ -28,46 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBoxQuestion = new TextBox();
             textBoxAnswer = new TextBox();
             pictureBox1 = new PictureBox();
             buttonWoP = new Button();
             buttonClear = new Button();
-            buttonSend = new Button();
             buttonLoadPicture = new Button();
             buttonPaste = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // textBoxQuestion
-            // 
-            textBoxQuestion.Location = new Point(12, 12);
-            textBoxQuestion.Multiline = true;
-            textBoxQuestion.Name = "textBoxQuestion";
-            textBoxQuestion.Size = new Size(313, 140);
-            textBoxQuestion.TabIndex = 0;
-            // 
             // textBoxAnswer
             // 
-            textBoxAnswer.Location = new Point(12, 169);
+            textBoxAnswer.Location = new Point(14, 16);
+            textBoxAnswer.Margin = new Padding(3, 4, 3, 4);
             textBoxAnswer.Multiline = true;
             textBoxAnswer.Name = "textBoxAnswer";
-            textBoxAnswer.Size = new Size(313, 140);
+            textBoxAnswer.Size = new Size(357, 291);
             textBoxAnswer.TabIndex = 1;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(344, 12);
+            pictureBox1.Location = new Point(406, 13);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(444, 426);
+            pictureBox1.Size = new Size(496, 481);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
             // buttonWoP
             // 
-            buttonWoP.Location = new Point(12, 328);
+            buttonWoP.Location = new Point(210, 336);
+            buttonWoP.Margin = new Padding(3, 4, 3, 4);
             buttonWoP.Name = "buttonWoP";
-            buttonWoP.Size = new Size(166, 23);
+            buttonWoP.Size = new Size(168, 75);
             buttonWoP.TabIndex = 3;
             buttonWoP.Text = "Zapytaj co jest na obrazku?";
             buttonWoP.UseVisualStyleBackColor = true;
@@ -75,29 +69,21 @@
             // 
             // buttonClear
             // 
-            buttonClear.Location = new Point(12, 368);
+            buttonClear.Location = new Point(14, 434);
+            buttonClear.Margin = new Padding(3, 4, 3, 4);
             buttonClear.Name = "buttonClear";
-            buttonClear.Size = new Size(166, 23);
+            buttonClear.Size = new Size(170, 60);
             buttonClear.TabIndex = 4;
             buttonClear.Text = "Wyczyść";
             buttonClear.UseVisualStyleBackColor = true;
             buttonClear.Click += buttonClear_Click;
             // 
-            // buttonSend
-            // 
-            buttonSend.Location = new Point(12, 406);
-            buttonSend.Name = "buttonSend";
-            buttonSend.Size = new Size(166, 23);
-            buttonSend.TabIndex = 5;
-            buttonSend.Text = "Wyślij";
-            buttonSend.UseVisualStyleBackColor = true;
-            buttonSend.Click += buttonSend_Click;
-            // 
             // buttonLoadPicture
             // 
-            buttonLoadPicture.Location = new Point(184, 328);
+            buttonLoadPicture.Location = new Point(14, 336);
+            buttonLoadPicture.Margin = new Padding(3, 4, 3, 4);
             buttonLoadPicture.Name = "buttonLoadPicture";
-            buttonLoadPicture.Size = new Size(141, 23);
+            buttonLoadPicture.Size = new Size(170, 75);
             buttonLoadPicture.TabIndex = 6;
             buttonLoadPicture.Text = "Wczytaj obrazek";
             buttonLoadPicture.UseVisualStyleBackColor = true;
@@ -105,9 +91,10 @@
             // 
             // buttonPaste
             // 
-            buttonPaste.Location = new Point(184, 368);
+            buttonPaste.Location = new Point(210, 434);
+            buttonPaste.Margin = new Padding(3, 4, 3, 4);
             buttonPaste.Name = "buttonPaste";
-            buttonPaste.Size = new Size(141, 23);
+            buttonPaste.Size = new Size(168, 60);
             buttonPaste.TabIndex = 7;
             buttonPaste.Text = "Wklej";
             buttonPaste.UseVisualStyleBackColor = true;
@@ -115,17 +102,16 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 515);
             Controls.Add(buttonPaste);
             Controls.Add(buttonLoadPicture);
-            Controls.Add(buttonSend);
             Controls.Add(buttonClear);
             Controls.Add(buttonWoP);
             Controls.Add(pictureBox1);
             Controls.Add(textBoxAnswer);
-            Controls.Add(textBoxQuestion);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -134,13 +120,10 @@
         }
 
         #endregion
-
-        private TextBox textBoxQuestion;
         private TextBox textBoxAnswer;
         private PictureBox pictureBox1;
         private Button buttonWoP;
         private Button buttonClear;
-        private Button buttonSend;
         private Button buttonLoadPicture;
         private Button buttonPaste;
     }

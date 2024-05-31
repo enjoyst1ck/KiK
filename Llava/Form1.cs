@@ -15,14 +15,12 @@ namespace Llava
 
         private void buttonWoP_Click(object sender, EventArgs e)
         {
-            textBoxQuestion.Text = "What's in this image?";
             AskOllama();
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
             conversationHistory = "";
-            textBoxQuestion.Text = "";
             textBoxAnswer.Text = "";
         }
 
@@ -35,7 +33,7 @@ namespace Llava
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "Image Files(.bmp;.jpg; .jpeg;.png)| .bmp;.jpg; .jpeg;.png";
+                openFileDialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.png)|*.bmp;*.jpg;*.jpeg;*.png";
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true;
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -74,9 +72,8 @@ namespace Llava
 
         private async void AskOllama()
         {
-            if (!string.IsNullOrEmpty(textBoxQuestion.Text))
-                textBoxAnswer.Text = "Czekaj na odpowiedü...";
-            else return;
+            textBoxAnswer.Text = "Czekaj na odpowiedü...";
+
             try
             {
                 var client = new HttpClient();
@@ -86,12 +83,12 @@ namespace Llava
                     var json = Newtonsoft.Json.JsonConvert.SerializeObject(new
                     {
                         model = "llava",
-                        prompt = conversationHistory + textBoxQuestion.Text,
+                        prompt = conversationHistory + "Co jest na obrazku?",
                         images = new JArray(pictureBox1.Tag)
                     });
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
                     var response = await client.PostAsync("http://localhost:11434/api/generate", content);
-
+                    
                     if (!response.IsSuccessStatusCode) throw new Exception($"Error: {response.StatusCode}");
 
                     var responseBody = await response.Content.ReadAsStringAsync();
@@ -106,9 +103,8 @@ namespace Llava
                         textOfModelAnswer += jsonResponse[i]["response"].ToString();
                     if (!string.IsNullOrEmpty(textOfModelAnswer))
                     {
-                        textBoxAnswer.Text = textBoxQuestion.Text + " \r\n\r\n";
+                        textBoxAnswer.Text = "Co jest na obrazku?" + " \r\n\r\n";
                         textBoxAnswer.Text += textOfModelAnswer.Replace("\n", "\r\n").Trim();
-                        textBoxQuestion.Text = "";
                         conversationHistory += textBoxAnswer.Text + " \r\n\r\n";
                     }
                 }
